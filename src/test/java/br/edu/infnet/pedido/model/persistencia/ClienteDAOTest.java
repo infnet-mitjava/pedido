@@ -12,12 +12,9 @@ public class ClienteDAOTest {
 
 	private ClienteDAO clienteDAO;
 
-	
 	@Before
 	public void initalize() {
-		clienteDAO = new ClienteDAO();
-		clienteDAO.deletar(new Cliente(99L));
-		Cliente cliente = new Cliente("Jose das Couves",99L); 
+		Cliente cliente = new Cliente("Jose das Couves"); 
 		clienteDAO.salvar(cliente);
 		Assert.assertTrue(true);
 		System.out.println("rodou o before");
@@ -42,7 +39,10 @@ public class ClienteDAOTest {
 	@Test
 	public void testDeletarClientes() {
 		ClienteDAO clienteDAO = new ClienteDAO();
-		Boolean retorno = clienteDAO.deletar(new Cliente(99L));
+		
+		List<Cliente> todos = clienteDAO.listarTodos();
+		
+		Boolean retorno = clienteDAO.deletar(todos.get(0));
 		Assert.assertTrue(retorno);
 	}
 	
