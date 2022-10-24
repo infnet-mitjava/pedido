@@ -36,6 +36,31 @@ public class ClienteDAO {
 		return false;
 	}
 	
+	public Boolean atualizar(Cliente cliente) {
+		String sql = "update cliente values (?) where codigo = ?";
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setLong(1, cliente.getCodigo()); 
+			pstm.setString(2, cliente.getNome());
+			return pstm.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public Boolean deletar(Cliente cliente) {
+		String sql = "delete from cliente  where codigo = ?";
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setLong(1, cliente.getCodigo()); //sql injection
+			return pstm.executeUpdate() > 0;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 	public List<Cliente> listarTodos(){
 		String sql = "select * from cliente";
 		List<Cliente> clientes = new ArrayList<>();
@@ -55,5 +80,18 @@ public class ClienteDAO {
 		return null;
 	}
 	
+	public Cliente obter(Long codigo){
+		String sql = "select * from cliente where codigo = ? ";
+		try {
+			stm = con.createStatement();
+			rs = stm.executeQuery(sql);
+			if(rs.next()) {
+				return new Cliente(rs.getString("nome"), rs.getLong("codigo"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

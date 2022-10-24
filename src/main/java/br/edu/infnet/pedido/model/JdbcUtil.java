@@ -12,7 +12,7 @@ public class JdbcUtil {
 	private static Logger logger = LoggerFactory.getLogger(JdbcUtil.class);
 	
 	public static Connection obterConexao() {
-		String password = "root00";
+		String password = "";
 		String user= "root";
 		String url = "jdbc:mysql://localhost:3306/app?createDatabaseIfNotExist=true";
 		try {
