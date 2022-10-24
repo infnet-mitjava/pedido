@@ -10,7 +10,7 @@ import br.edu.infnet.pedido.model.entidade.Cliente;
 
 public class ClienteDAOTest {
 
-	private ClienteDAO clienteDAO;
+	private ClienteDAO clienteDAO = new ClienteDAO();
 
 	@Before
 	public void initalize() {
