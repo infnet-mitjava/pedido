@@ -19,6 +19,10 @@ public class Cliente {
 		this.codigo = codigo;
 	}
 
+	public Cliente(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}

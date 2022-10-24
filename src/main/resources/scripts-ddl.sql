@@ -12,6 +12,8 @@ create table produto(
 	preco double
 )
 
+select * from cliente;
+
 
 insert into produto (codigo,  descricao, preco) values (null, 'Arroz a bolonheza', 100);
 
