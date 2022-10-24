@@ -13,7 +13,7 @@ public class PedidoDAOTest {
 	public void testListaClientes() {
 		pedidoDAO = new PedidoDAO();
 		List<PedidoDAO> lista = pedidoDAO.listarTodos();
-		
+		System.out.println(lista);
 		Assert.assertTrue(lista.size() > 0);
 	}
 	

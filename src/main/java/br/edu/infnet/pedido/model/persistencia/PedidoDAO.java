@@ -33,7 +33,13 @@ public class PedidoDAO extends JdbcDAO<Pedido> {
 
 	@Override
 	public List<Pedido> listarTodos() {
-		String sql = "select * from cliente";
+		String sql = "select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p "
+				+ "	join cliente c"
+				+ "	join itens_pedido i"
+				+ "	join produto pr"
+				+ "	on p.cliente_cod = c.codigo"
+				+ "	and p.codigo = i.pedido_cod "
+				+ "	and pr.codigo = i.produto_cod";
 		Map<Long, Pedido> pedidos = new TreeMap<Long, Pedido>();
 		try {
 			stm = con.createStatement();
@@ -42,9 +48,9 @@ public class PedidoDAO extends JdbcDAO<Pedido> {
 				//p.codigo, p.data, c.nome, pr.descricao, pr.preco
 				Long codigo = rs.getLong("codigo");
 				LocalDate data = rs.getDate("data").toLocalDate();
-				String nome = rs.getString("data");
-				String descricao = rs.getString("data");
-				Double preco = rs.getDouble("data");
+				String nome = rs.getString("nome");
+				String descricao = rs.getString("descricao");
+				Double preco = rs.getDouble("preco");
 				Pedido pedido = null;
 				if(pedidos.get(codigo) == null) {
 					pedido = new Pedido(codigo, data, new Cliente(nome));
