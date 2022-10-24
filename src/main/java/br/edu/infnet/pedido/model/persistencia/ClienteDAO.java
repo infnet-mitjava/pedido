@@ -10,7 +10,6 @@ public class ClienteDAO extends JdbcDAO<Cliente>  {
 
 	public ClienteDAO() {
 	}
-	
 
 	@Override
 	public Boolean salvar(Cliente cliente) {
