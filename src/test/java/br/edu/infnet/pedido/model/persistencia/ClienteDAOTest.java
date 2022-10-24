@@ -10,7 +10,7 @@ import br.edu.infnet.pedido.model.entidade.Cliente;
 
 public class ClienteDAOTest {
 
-	private ClienteDAO clienteDAO = new ClienteDAO();
+	private IDAO clienteDAO = new ClienteDAO();
 
 	@Before
 	public void initalize() {
@@ -22,7 +22,7 @@ public class ClienteDAOTest {
 	
 	@Test
 	public void test() {
-		ClienteDAO clienteDAO = new ClienteDAO();
+		IDAO clienteDAO = new ClienteDAO();
 		Cliente cliente = new Cliente("Jose das Couves"); 
 		boolean validacao = clienteDAO.salvar(cliente);
 		Assert.assertTrue(validacao);
@@ -30,7 +30,7 @@ public class ClienteDAOTest {
 	
 	@Test
 	public void testListaClientes() {
-		ClienteDAO clienteDAO = new ClienteDAO();
+		IDAO clienteDAO = new ClienteDAO();
 		List<Cliente> lista = clienteDAO.listarTodos();
 		Assert.assertTrue(lista.size() > 0);
 	}
@@ -38,7 +38,7 @@ public class ClienteDAOTest {
 	
 	@Test
 	public void testDeletarClientes() {
-		ClienteDAO clienteDAO = new ClienteDAO();
+		IDAO clienteDAO = new ClienteDAO();
 		
 		List<Cliente> todos = clienteDAO.listarTodos();
 		

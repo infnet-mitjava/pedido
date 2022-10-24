@@ -11,7 +11,7 @@ import java.util.List;
 import br.edu.infnet.pedido.model.JdbcUtil;
 import br.edu.infnet.pedido.model.entidade.Cliente;
 
-public class ClienteDAO {
+public class ClienteDAO implements IDAO<Cliente> {
 
 	private Connection con;
 	private PreparedStatement pstm;
@@ -24,6 +24,7 @@ public class ClienteDAO {
 	
 	//CRUD
 	//CREATE RETRIEVE UPDATE DELETE
+	@Override
 	public Boolean salvar(Cliente cliente) {
 		String sql = "insert into cliente(nome, codigo) values (?,null)";
 		try {
@@ -36,6 +37,7 @@ public class ClienteDAO {
 		return false;
 	}
 	
+	@Override
 	public Boolean atualizar(Cliente cliente) {
 		String sql = "update cliente values (?) where codigo = ?";
 		try {
@@ -49,6 +51,7 @@ public class ClienteDAO {
 		return false;
 	}
 	
+	@Override
 	public Boolean deletar(Cliente cliente) {
 		String sql = "delete from cliente  where codigo = ?";
 		try {
@@ -61,6 +64,7 @@ public class ClienteDAO {
 		return false;
 	}
 	
+	@Override
 	public List<Cliente> listarTodos(){
 		String sql = "select * from cliente";
 		List<Cliente> clientes = new ArrayList<>();
@@ -80,6 +84,7 @@ public class ClienteDAO {
 		return null;
 	}
 	
+	@Override
 	public Cliente obter(Long codigo){
 		String sql = "select * from cliente where codigo = ? ";
 		try {
