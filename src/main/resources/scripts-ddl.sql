@@ -37,7 +37,6 @@ create table itens_pedido (
 
 insert into pedido (codigo, data, cliente_cod) values (null, '2022-10-22', 5);
 
-insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, )
 
 insert into cliente (nome, codigo) values ('Jose das Couves', null);
 
@@ -45,11 +44,16 @@ insert into produto (codigo,  descricao, preco) values (null, 'Arroz a bolonheza
 insert into produto (codigo,  descricao, preco) values (null, 'Bife com fritas', 200);
 insert into produto (codigo,  descricao, preco) values (null, 'Coca-cola', 8);
 
+insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 1);
+insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 2);
+insert into itens_pedido (codigo, pedido_cod, produto_cod) value (null, 1, 3);
 
 select * from pedido;
 
-select * from pedido p 
+select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p 
 	join cliente c
+	join itens_pedido i
+	join produto pr
 	on p.cliente_cod = c.codigo
-
-
+	and p.codigo = i.pedido_cod
+	and pr.codigo = i.produto_cod;
